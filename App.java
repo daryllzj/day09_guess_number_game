@@ -1,6 +1,7 @@
 package sdf;
 
 import java.io.Console;
+import java.io.IOException;
 import java.util.Random;
 
 /**
@@ -13,35 +14,38 @@ public final class App {
     /**
      * Says hello to the world.
      * @param args The arguments of the program.
+     * @throws IOException
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
     Random rand = new Random();
 
     Integer guessNumber = rand.nextInt(0, 100);
 
-    System.out.println("the number is " + guessNumber);
+    Server server = new Server();
 
-    Integer myGuess = 0;
+    server.runServer(guessNumber);
 
-    Console cons = System.console();
+    // Integer myGuess = 0;
 
-    while(myGuess != guessNumber){
-        String input = cons.readLine("Guess > ");
-        myGuess = Integer.parseInt(input);
-        if (myGuess > guessNumber) {
+    // Console cons = System.console();
 
-            System.out.println("lower");
+    // while(myGuess != guessNumber){
+    //     String input = cons.readLine("Guess > ");
+    //     myGuess = Integer.parseInt(input);
+    //     if (myGuess > guessNumber) {
+
+    //         System.out.println("lower");
             
-        } else if (myGuess < guessNumber){
+    //     } else if (myGuess < guessNumber){
 
-            System.out.println("higher");
+    //         System.out.println("higher");
 
-        } else {
-            System.out.println("correct!");
-            System.exit(1);
-        }
-
-    }
+    //     } else {
+    //         System.out.println("correct!");
+    //         System.exit(1);
+    //     }
 
     }
+
+    
 }
